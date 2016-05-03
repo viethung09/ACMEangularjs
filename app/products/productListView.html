@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="bs-example">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-size: large">
+                Product List
+            </div>
+            <table class="table table-hover u-full-width" ng-controller="productListCtrl">
+                <thead>
+                <tr>
+                    <th><button class="btn btn-primary" ng-click="toggleImage()">{{ hideImage ? "Show" : "Hide" }} Picture</button></th>
+                    <th>Products</th>
+                    <th>Code</th>
+                    <th>Available</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="product in products">
+                    <td><img id="img-thumbnail"
+                             class="img-responsive"
+                             ng-if="!hideImage"
+                             ng-src="{{ product.imageUrl }}"
+                             alt=""
+                             title="{{ product.productName }}">
+                    </td>
+                    <td><a ui-sref="productDetailView({ productId : product.productId })">{{ product.productName }}</a></td>
+                    <td>{{ product.productCode }}</td>
+                    <td>{{ product.releaseDate }}</td>
+                    <td>{{ product.price | currency }}</td>
+                    <td>
+                        <a class="btn btn-primary"
+                           ui-sref="productEdit.info({ productId : product.productId })">Edit
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
